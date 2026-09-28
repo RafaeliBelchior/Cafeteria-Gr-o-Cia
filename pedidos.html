@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultar pedido | Grão & Cia</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="marca">Grão <span>&</span> Cia</div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="index.html#cardapio">Cardápio</a>
+    </nav>
+  </header>
+
+  <section class="pedido">
+    <h2>Consultar pedido</h2>
+    <p class="subtexto">Digite o nome usado no pedido ou o número do pedido para ver o status.</p>
+
+    <div class="busca-pedido">
+      <input type="text" id="busca-input" placeholder="Nome ou número do pedido">
+      <button class="botao" id="busca-botao">Buscar</button>
+    </div>
+
+    <div id="lista-resultados" class="lista-resultados"></div>
+  </section>
+
+  <footer class="rodape">
+    <p>Grão &amp; Cia · Rua das Palmeiras, 120 · Aberto todos os dias, 7h às 19h</p>
+    <p>(11) 4002-8922</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('busca-botao').addEventListener('click', buscarPedidos);
+    document.getElementById('busca-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') buscarPedidos();
+    });
+
+    function buscarPedidos() {
+      const termo = document.getElementById('busca-input').value.trim().toLowerCase();
+      const container = document.getElementById('lista-resultados');
+      container.innerHTML = '';
+
+      if (!termo) {
+        container.innerHTML = '<p class="vazio">Digite um nome ou número de pedido para buscar.</p>';
+        return;
+      }
+
+      const pedidos = obterPedidos().filter(p =>
+        p.nome.toLowerCase().includes(termo) || p.id.toLowerCase() === termo
+      );
+
+      if (pedidos.length === 0) {
+        container.innerHTML = '<p class="vazio">Nenhum pedido encontrado.</p>';
+        return;
+      }
+
+      pedidos.reverse().forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card-pedido';
+        card.innerHTML = `
+          <div class="card-pedido-topo">
+            <strong>#${p.id}</strong>
+            <span class="status status-${p.status}">${textoStatus(p.status)}</span>
+          </div>
+          <p>${p.quantidade}x ${p.produto} — R$ ${(p.preco * p.quantidade).toFixed(2).replace('.', ',')}</p>
+          <p class="card-pedido-info">Cliente: ${p.nome} · Feito em ${p.data}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function textoStatus(status) {
+      const mapa = { pendente: 'Pendente', preparo: 'Em preparo', pronto: 'Pronto', entregue: 'Entregue' };
+      return mapa[status] || status;
+    }
+  </script>
+</body>
+</html>
