@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consultar pedido | Grão & Cia</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultar pedido | Grão & Cia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Topo -->
   <header class="topo">
     <div class="marca">Grão <span>&</span> Cia</div>
-    <nav>
+    <nav class="nav-links">
       <a href="index.html">Início</a>
       <a href="index.html#cardapio">Cardápio</a>
     </nav>
   </header>
 
+  <!-- Seção de Busca do Pedido -->
   <section class="pedido">
     <h2>Consultar pedido</h2>
-    <p class="subtexto">Digite o nome usado no pedido ou o número do pedido para ver o status.</p>
+    <p class="subtexto">Digite o nome usado no pedido ou o número do pedido para ver o status em tempo real.</p>
 
     <div class="busca-pedido">
       <input type="text" id="busca-input" placeholder="Nome ou número do pedido">
@@ -29,16 +31,29 @@
   </section>
 
   <footer class="rodape">
-    <p>Grão &amp; Cia · Rua das Palmeiras, 120 · Aberto todos os dias, 7h às 19h</p>
+    <p>Grão &; Cia · Rua das Palmeiras, 120 · Aberto todos os dias, 7h às 19h</p>
     <p>(11) 4002-8922</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Lógica da busca de pedidos -->
   <script>
-    document.getElementById('busca-botao').addEventListener('click', buscarPedidos);
-    document.getElementById('busca-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') buscarPedidos();
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('busca-botao').addEventListener('click', buscarPedidos);
+      document.getElementById('busca-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') buscarPedidos();
+      });
+
+      // Auto-preenche a busca caso haja um usuário logado
+      const usuario = JSON.parse(localStorage.getItem('gc_usuario'));
+      if (usuario && usuario.nome) {
+        document.getElementById('busca-input').value = usuario.nome;
+        buscarPedidos();
+      }
     });
+
+    function obterPedidos() {
+      return JSON.parse(localStorage.getItem('pedidos')) || [];
+    }
 
     function buscarPedidos() {
       const termo = document.getElementById('busca-input').value.trim().toLowerCase();
@@ -62,13 +77,14 @@
       pedidos.reverse().forEach(p => {
         const card = document.createElement('div');
         card.className = 'card-pedido';
+        const valor = p.precoTotal ? p.precoTotal : (p.preco * p.quantidade);
         card.innerHTML = `
           <div class="card-pedido-topo">
             <strong>#${p.id}</strong>
             <span class="status status-${p.status}">${textoStatus(p.status)}</span>
           </div>
-          <p>${p.quantidade}x ${p.produto} — R$ ${(p.preco * p.quantidade).toFixed(2).replace('.', ',')}</p>
-          <p class="card-pedido-info">Cliente: ${p.nome} · Feito em ${p.data}</p>
+          <p><strong>${p.quantidade}x ${p.produto}</strong> — R$ ${valor.toFixed(2).replace('.', ',')}</p>
+          <p class="card-pedido-info">Cliente: ${p.nome} · Realizado às ${p.data}</p>
         `;
         container.appendChild(card);
       });
