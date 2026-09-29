@@ -1,192 +1,235 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grão & Cia | Pedidos Online</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grão & Cia | Pedidos Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png" >
 </head>
+
 <body>
 
-  <!-- ================================================================= -->
-  <!-- 1. CABEÇALHO (NAVEGAÇÃO E ÁREA DE LOGIN)                         -->
-  <!-- ================================================================= -->
-  <header class="topo">
-    <div class="marca">Grão <span>&</span> Cia</div>
-    
-    <nav class="nav-links">
-      <a href="#cardapio">Cardápio</a>
-      <a href="pedidos.html">Consultar pedido</a>
-    </nav>
+    <!-- ================================================================= -->
+    <!-- 1. CABEÇALHO (NAVEGAÇÃO E ÁREA DE LOGIN)                         -->
+    <!-- ================================================================= -->
+    <header class="topo">
+        <div class="marca">Grão <span>&</span> Cia</div>
 
-    <div class="area-usuario">
-      <!-- Botão para abrir o modal quando o utilizador NÃO está logado -->
-      <button class="botao botao-outline" id="btn-abrir-login">Entrar / Cadastrar</button>
+        <nav class="nav-links">
+            <a href="#cardapio">Cardápio</a>
+            <a href="pedidos.html">Consultar pedido</a>
+        </nav>
 
-      <!-- Área visível quando o utilizador ESTÁ logado -->
-      <div id="usuario-logado-box" class="usuario-box" style="display: none;">
-        <span>Olá, <strong id="nome-usuario-header">Cliente</strong></span>
-        <button id="btn-logout" class="btn-sair">Sair</button>
-      </div>
-    </div>
-  </header>
+        <div class="area-usuario">
+            <!-- Botão para abrir o modal quando o utilizador NÃO está logado -->
+            <button class="botao botao-outline" id="btn-abrir-login">Entrar / Cadastrar</button>
 
-  <!-- ================================================================= -->
-  <!-- 2. SEÇÃO HERO (APRESENTAÇÃO DO ESTABELECIMENTO)                  -->
-  <!-- ================================================================= -->
-  <section class="hero">
-    <div class="hero-texto">
-      <h1>Café coado na hora,<br>direto na sua porta.</h1>
-      <p>Somos uma cafeteria de bairro que torra o próprio grão desde 2015. Escolha um item abaixo e confirme o pedido — a entrega sai em até 30 minutos.</p>
-    </div>
-  </section>
+            <!-- Área visível quando o utilizador ESTÁ logado -->
+            <div id="usuario-logado-box" class="usuario-box" style="display: none;">
+                <span>Olá, <strong id="nome-usuario-header">Cliente</strong></span>
+                <button id="btn-logout" class="btn-sair">Sair</button>
+            </div>
+        </div>
+    </header>
 
-  <section id="cardapio" class="cardapio">
-    <h2>Nosso Cardápio</h2>
+    <!-- ================================================================= -->
+    <!-- 2. SEÇÃO HERO (APRESENTAÇÃO DO ESTABELECIMENTO)                  -->
+    <!-- ================================================================= -->
+    <section class="hero">
+        <div class="hero-texto">
+            <h1>Café coado na hora,<br>direto na sua porta.</h1>
+            <p>Somos uma cafeteria de bairro que torra o próprio grão desde 2015. Escolha um item abaixo e confirme o
+                pedido — a entrega sai em até 30 minutos.</p>
+        </div>
+    </section>
 
-    <!-- BOTOES DAS ABAS DE CATEGORIA -->
-    <div class="abas-container">
-      <button class="aba-item ativa" onclick="mudarAba(event, 'quentes')">Cafés Quentes</button>
-      <button class="aba-item" onclick="mudarAba(event, 'gelados')">Bebidas Geladas</button>
-      <button class="aba-item" onclick="mudarAba(event, 'salgados')">Salgados</button>
-      <button class="aba-item" onclick="mudarAba(event, 'doces')">Doces</button>
-    </div>
+    <section id="cardapio" class="cardapio">
+        <h2>Nosso Cardápio</h2>
 
-    <!-- CONTEÚDO: CAFÉS QUENTES -->
-    <div id="quentes" class="aba-conteudo ativa">
-      <div class="grade-cardapio">
-        <article class="item">
-          <img src="imagens/cafeespresso.jpg" alt="Xícara de espresso" class="item-imagem">
-          <h3>Espresso</h3>
-          <p>Extração curta e encorpada, direto do grão torrado na casa.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 7,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Espresso">Confirmar pedido</button>
-          </div>
-        </article>
+        <!-- BOTOES DAS ABAS DE CATEGORIA -->
+        <div class="abas-container">
+            <button class="aba-item ativa" onclick="mudarAba(event, 'quentes')">Cafés Quentes</button>
+            <button class="aba-item" onclick="mudarAba(event, 'gelados')">Bebidas Geladas</button>
+            <button class="aba-item" onclick="mudarAba(event, 'salgados')">Salgados</button>
+            <button class="aba-item" onclick="mudarAba(event, 'doces')">Doces</button>
+        </div>
 
-        <article class="item">
-          <img src="imagens/cafecoado.jpg" alt="Café sendo coado no filtro" class="item-imagem">
-          <h3>Café coado</h3>
-          <p>Método filtrado, leve e aromático, feito na hora do pedido.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 9,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Café Coado">Confirmar pedido</button>
-          </div>
-        </article>
+        <!-- CONTEÚDO: CAFÉS QUENTES -->
+        <div id="quentes" class="aba-conteudo ativa">
+            <div class="grade-cardapio">
+                <article class="item">
+                    <img src="imagens/cafeespresso.jpg" alt="Xícara de espresso" class="item-imagem">
+                    <h3>Espresso</h3>
+                    <p>Extração curta e encorpada, direto do grão torrado na casa.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 7,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Espresso">Confirmar pedido</button>
+                    </div>
+                </article>
 
-        <article class="item">
-          <img src="imagens/cappucino.jpg" alt="Cappuccino com arte em latte" class="item-imagem">
-          <h3>Cappuccino</h3>
-          <p>Espresso, leite vaporizado e uma camada firme de espuma.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 12,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Cappuccino">Confirmar pedido</button>
-          </div>
-        </article>
+                <article class="item">
+                    <img src="imagens/cafecoado.jpg" alt="Café sendo coado no filtro" class="item-imagem">
+                    <h3>Café coado</h3>
+                    <p>Método filtrado, leve e aromático, feito na hora do pedido.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 9,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Café Coado">Confirmar pedido</button>
+                    </div>
+                </article>
 
-        <article class="item">
-          <img src="imagens/mocha.jpg" alt="Mocha com chantilly" class="item-imagem">
-          <h3>Mocha</h3>
-          <p>Espresso, chocolate meio amargo e leite cremoso.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 14,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Mocha">Confirmar pedido</button>
-          </div>
-        </article>
-      </div>
-    </div>
+                <article class="item">
+                    <img src="imagens/cappucino.jpg" alt="Cappuccino com arte em latte" class="item-imagem">
+                    <h3>Cappuccino</h3>
+                    <p>Espresso, leite vaporizado e uma camada firme de espuma.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 12,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Cappuccino">Confirmar pedido</button>
+                    </div>
+                </article>
 
-    <!-- CONTEÚDO: BEBIDAS GELADAS -->
-    <div id="gelados" class="aba-conteudo">
-      <div class="grade-cardapio">
-        <article class="item">
-          <img src="imagens/latte.jpg" alt="Latte gelado" class="item-imagem">
-          <h3>Latte Gelado</h3>
-          <p>Espresso suave com leite bem gelado e pedras de gelo.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 12,50</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Latte Gelado">Confirmar pedido</button>
-          </div>
-        </article>
+                <article class="item">
+                    <img src="imagens/mocha.jpg" alt="Mocha com chantilly" class="item-imagem">
+                    <h3>Mocha</h3>
+                    <p>Espresso, chocolate meio amargo e leite cremoso.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 14,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Mocha">Confirmar pedido</button>
+                    </div>
+                </article>
+            </div>
+        </div>
 
-        <article class="item">
-          <img src="imagens/chagelado.jpg" alt="Chá gelado com folhas de hortelã" class="item-imagem">
-          <h3>Chá Gelado</h3>
-          <p>Blend frutado servido bem gelado com toque de hortelã.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 8,50</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Chá Gelado">Confirmar pedido</button>
-          </div>
-        </article>
+        <!-- CONTEÚDO: BEBIDAS GELADAS -->
+        <div id="gelados" class="aba-conteudo">
+            <div class="grade-cardapio">
+                <article class="item">
+                    <img src="imagens/latte.jpg" alt="Latte gelado" class="item-imagem">
+                    <h3>Latte Gelado</h3>
+                    <p>Espresso suave com leite bem gelado e pedras de gelo.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 12,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Latte Gelado">Confirmar pedido</button>
+                    </div>
+                </article>
 
-        <article class="item">
-          <img src="imagens/Milkshake.jpg" alt="Milk Shake" class="item-imagem">
-          <h3>MilkShake</h3>
-          <p>MilkShake bem servido com chocolate e chantilly.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 8,50</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="MilkShake">Confirmar pedido</button>
-          </div>
-        </article>
-        
-        <article class="item">
-          <img src="imagens/pink-lemonade.jpg" alt="Copo de Pink Lemonade com rodelas de limão e frutas vermelhas" class="item-imagem">
-          <h3>Pink Lemonade</h3>
-          <p>Limonada fresca artesanal com xarope de frutas vermelhas e pedaços de fruta.</p>
+                <article class="item">
+                    <img src="imagens/chagelado.jpg" alt="Chá gelado com folhas de hortelã" class="item-imagem">
+                    <h3>Chá Gelado</h3>
+                    <p>Blend frutado servido bem gelado com toque de hortelã.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 8,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Chá Gelado">Confirmar pedido</button>
+                    </div>
+                </article>
+
+                <article class="item">
+                    <img src="imagens/Milkshake.jpg" alt="Milk Shake" class="item-imagem">
+                    <h3>MilkShake</h3>
+                    <p>MilkShake bem servido com chocolate e chantilly.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 8,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="MilkShake">Confirmar pedido</button>
+                    </div>
+                </article>
+
+                <article class="item">
+                    <img src="imagens/pink-lemonade.jpg"
+                        alt="Copo de Pink Lemonade com rodelas de limão e frutas vermelhas" class="item-imagem">
+                    <h3>Pink Lemonade</h3>
+                    <p>Limonada fresca artesanal com xarope de frutas vermelhas e pedaços de fruta.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 10,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Pink Lemonade">Confirmar pedido</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO: SALGADOS -->
+        <div id="salgados" class="aba-conteudo">
+            <div class="grade-cardapio">
+                <article class="item">
+                    <img src="imagens/paodequeijo.jpg" alt="Pães de queijo em uma tigela" class="item-imagem">
+                    <h3>Pão de queijo</h3>
+                    <p>Assado na hora, casquinha crocante e miolo macio.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 8,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Pão de Queijo">Confirmar pedido</button>
+                </article>
+
+                <article class="item">
+                    <img src="imagens/torrada.jpg" alt="Fatias de torrada douradas" class="item-imagem">
+                    <h3>Torrada</h3>
+                    <p>Pão artesanal, manteiga e um toque de sal.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 7,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Torrada">Confirmar pedido</button>
+                    </div>
+                </article>
+
+                <article class="item">
+                    <img src="imagens/croissante.jpg" alt="Croissants amanteigados" class="item-imagem">
+                    <h3>Croissant</h3>
+                    <p>Folhado amanteigado, assado fresco todos os dias.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 9,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Croissant">Confirmar pedido</button>
+                    </div>
+                </article>
+                <article class="item">
+                    <img src="imagens/empada.jpg" alt="Empada dourada de frango com requeijão" class="item-imagem">
+                    <h3>Empada de Frango</h3>
+                    <p>Massa artesanal que derrete na boca, recheada com frango e requeijão cremoso.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 8,50</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Empada de Frango">Confirmar
+                            pedido</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO: DOCES -->
+        <div id="doces" class="aba-conteudo">
+            <div class="grade-cardapio">
+                <article class="item">
+                    <img src="imagens/bolo.jpg" alt="Fatia de bolo de chocolate com morangos" class="item-imagem">
+                    <h3>Bolo do dia</h3>
+                    <p>Fatia generosa, sabor muda conforme a produção da manhã.</p>
+                    <div class="item-rodape">
+                        <span class="preco">R$ 11,00</span>
+                        <button class="botao botao-pequeno btn-pedir" data-id="Bolo do Dia">Confirmar pedido</button>
+                    </div>
+                </article>
+           <article class="item">
+          <img src="imagens/brownie.jpg" alt="Brownie de chocolate com casquinha crocante" class="item-imagem">
+          <h3>Brownie de Chocolate</h3>
+          <p>Massa densa e molhadinha de chocolate meio amargo com nozes picadas.</p>
           <div class="item-rodape">
             <span class="preco">R$ 10,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Pink Lemonade">Confirmar pedido</button>
+            <button class="botao botao-pequeno btn-pedir" data-id="Brownie de Chocolate">Confirmar pedido</button>
           </div>
         </article>
-      </div>
-    </div>
 
-    <!-- CONTEÚDO: SALGADOS -->
-    <div id="salgados" class="aba-conteudo">
-      <div class="grade-cardapio">
         <article class="item">
-          <img src="imagens/paodequeijo.jpg" alt="Pães de queijo em uma tigela" class="item-imagem">
-          <h3>Pão de queijo</h3>
-          <p>Assado na hora, casquinha crocante e miolo macio.</p>
+          <img src="imagens/cookies.jpg" alt="Cookie artesanal com gotas de chocolate" class="item-imagem">
+          <h3>Cookie Artesanal</h3>
+          <p>Crocante por fora, macio por dentro e carregado de gotas de chocolate.</p>
           <div class="item-rodape">
             <span class="preco">R$ 8,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Pão de Queijo">Confirmar pedido</button>
+            <button class="botao botao-pequeno btn-pedir" data-id="Cookie Artesanal">Confirmar pedido</button>
           </div>
         </article>
 
         <article class="item">
-          <img src="imagens/torrada.jpg" alt="Fatias de torrada douradas" class="item-imagem">
-          <h3>Torrada</h3>
-          <p>Pão artesanal, manteiga e um toque de sal.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 7,50</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Torrada">Confirmar pedido</button>
-          </div>
-        </article>
-
-        <article class="item">
-          <img src="imagens/croissante.jpg" alt="Croissants amanteigados" class="item-imagem">
-          <h3>Croissant</h3>
-          <p>Folhado amanteigado, assado fresco todos os dias.</p>
+          <img src="imagens/cupcake.jpg" alt="Cupcake com cobertura cremosa e confeitos" class="item-imagem">
+          <h3>Cupcake Red Velvet</h3>
+          <p>Massa leve aveludada com recheio e cobertura cremosa de cream cheese.</p>
           <div class="item-rodape">
             <span class="preco">R$ 9,50</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Croissant">Confirmar pedido</button>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- CONTEÚDO: DOCES -->
-    <div id="doces" class="aba-conteudo">
-      <div class="grade-cardapio">
-        <article class="item">
-          <img src="imagens/bolo.jpg" alt="Fatia de bolo de chocolate com morangos" class="item-imagem">
-          <h3>Bolo do dia</h3>
-          <p>Fatia generosa, sabor muda conforme a produção da manhã.</p>
-          <div class="item-rodape">
-            <span class="preco">R$ 11,00</span>
-            <button class="botao botao-pequeno btn-pedir" data-id="Bolo do Dia">Confirmar pedido</button>
+            <button class="botao botao-pequeno btn-pedir" data-id="Cupcake Red Velvet">Confirmar pedido</button>
           </div>
         </article>
       </div>
@@ -194,232 +237,230 @@
 
   </section>
 
-  <!-- ================================================================= -->
-  <!-- 4. MODAL DE AUTENTICAÇÃO (LOGIN / CADASTRO)                        -->
-  <!-- ================================================================= -->
-  <div class="modal" id="modal-auth">
-    <div class="modal-caixa">
-      <button class="fechar-modal" id="fechar-auth">x</button>
-      
-      <div class="auth-abas">
-        <button class="aba-btn ativa" id="aba-login">Entrar</button>
-        <button class="aba-btn" id="aba-cadastro">Criar Conta</button>
-      </div>
+    <div class="modal" id="modal-auth">
+        <div class="modal-caixa">
+            <button class="fechar-modal" id="fechar-auth">x</button>
 
-      <!-- Formulário de Login -->
-      <form id="form-login" class="form-auth">
-        <label for="login-email">E-mail</label>
-        <input type="email" id="login-email" required placeholder="seu@email.com">
-        
-        <label for="login-senha">Senha</label>
-        <input type="password" id="login-senha" required placeholder="••••••••">
-        
-        <button type="submit" class="botao largura-total">Entrar</button>
-      </form>
+            <div class="auth-abas">
+                <button class="aba-btn ativa" id="aba-login">Entrar</button>
+                <button class="aba-btn" id="aba-cadastro">Criar Conta</button>
+            </div>
 
-      <!-- Formulário de Cadastro -->
-      <form id="form-cadastro" class="form-auth" style="display: none;">
-        <label for="cad-nome">Nome Completo</label>
-        <input type="text" id="cad-nome" required placeholder="Seu nome">
-        
-        <label for="cad-email">E-mail</label>
-        <input type="email" id="cad-email" required placeholder="seu@email.com">
-        
-        <label for="cad-senha">Senha</label>
-        <input type="password" id="cad-senha" required placeholder="Crie uma senha">
-        
-        <button type="submit" class="botao largura-total">Cadastrar</button>
-      </form>
+            <!-- Formulário de Login -->
+            <form id="form-login" class="form-auth">
+                <label for="login-email">E-mail</label>
+                <input type="email" id="login-email" required placeholder="seu@email.com">
+
+                <label for="login-senha">Senha</label>
+                <input type="password" id="login-senha" required placeholder="••••••••">
+
+                <button type="submit" class="botao largura-total">Entrar</button>
+            </form>
+
+            <!-- Formulário de Cadastro -->
+            <form id="form-cadastro" class="form-auth" style="display: none;">
+                <label for="cad-nome">Nome Completo</label>
+                <input type="text" id="cad-nome" required placeholder="Seu nome">
+
+                <label for="cad-email">E-mail</label>
+                <input type="email" id="cad-email" required placeholder="seu@email.com">
+
+                <label for="cad-senha">Senha</label>
+                <input type="password" id="cad-senha" required placeholder="Crie uma senha">
+
+                <button type="submit" class="botao largura-total">Cadastrar</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <!-- ================================================================= -->
-  <!-- 5. MODAL DE CONFIRMAÇÃO DE PEDIDO                                 -->
-  <!-- ================================================================= -->
-  <div class="modal" id="modal-pedido">
-    <div class="modal-caixa">
-      <h3>Confirmar pedido</h3>
-      <p id="modal-item-nome" style="margin: 10px 0; font-weight: 600; color: #c86d3b;"></p>
-      
-      <label for="modal-nome">Seu nome</label>
-      <input type="text" id="modal-nome" placeholder="Como podemos te chamar?">
-      
-      <label for="modal-qtd">Quantidade</label>
-      <input type="number" id="modal-qtd" min="1" value="1">
-      
-      <div class="modal-botoes">
-        <button class="botao botao-secundario" id="modal-cancelar">Cancelar</button>
-        <button class="botao" id="modal-confirmar">Confirmar</button>
-      </div>
+    <!-- ================================================================= -->
+    <!-- 5. MODAL DE CONFIRMAÇÃO DE PEDIDO                                 -->
+    <!-- ================================================================= -->
+    <div class="modal" id="modal-pedido">
+        <div class="modal-caixa">
+            <h3>Confirmar pedido</h3>
+            <p id="modal-item-nome" style="margin: 10px 0; font-weight: 600; color: #c86d3b;"></p>
+
+            <label for="modal-nome">Seu nome</label>
+            <input type="text" id="modal-nome" placeholder="Como podemos te chamar?">
+
+            <label for="modal-qtd">Quantidade</label>
+            <input type="number" id="modal-qtd" min="1" value="1">
+
+            <div class="modal-botoes">
+                <button class="botao botao-secundario" id="modal-cancelar">Cancelar</button>
+                <button class="botao" id="modal-confirmar">Confirmar</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="aviso" id="aviso-sucesso"></div>
+    <div class="aviso" id="aviso-sucesso"></div>
 
-  <!-- ================================================================= -->
-  <!-- 6. RODAPÉ                                                          -->
-  <!-- ================================================================= -->
-  <footer class="rodape">
-    <p>Grão & amp; Cia · Rua das Palmeiras, 120 · Aberto todos os dias, 7h às 19h</p>
-    <p>(11) 4002-8922</p>
-  </footer>
+    <!-- ================================================================= -->
+    <!-- 6. RODAPÉ                                                          -->
+    <!-- ================================================================= -->
+    <footer class="rodape">
+        <p>Grão & amp; Cia · Rua das Palmeiras, 120 · Aberto todos os dias, 7h às 19h</p>
+        <p>(11) 4002-8922</p>
+    </footer>
 
-  <!-- ================================================================= -->
-  <!-- 7. SCRIPT EMBUTIDO (INTEGRAÇÃO DIRETA)                           -->
-  <!-- ================================================================= -->
-  <script>
-    // Troca de abas do cardápio
-    function mudarAba(evt, idAba) {
-      const conteudos = document.querySelectorAll('.aba-conteudo');
-      conteudos.forEach(c => c.classList.remove('ativa'));
+    <!-- ================================================================= -->
+    <!-- 7. SCRIPT EMBUTIDO (INTEGRAÇÃO DIRETA)                           -->
+    <!-- ================================================================= -->
+    <script>
+        // Troca de abas do cardápio
+        function mudarAba(evt, idAba) {
+            const conteudos = document.querySelectorAll('.aba-conteudo');
+            conteudos.forEach(c => c.classList.remove('ativa'));
 
-      const botoes = document.querySelectorAll('.abas-container .aba-item');
-      botoes.forEach(b => b.classList.remove('ativa'));
+            const botoes = document.querySelectorAll('.abas-container .aba-item');
+            botoes.forEach(b => b.classList.remove('ativa'));
 
-      document.getElementById(idAba).classList.add('ativa');
-      evt.currentTarget.classList.add('ativa');
-    }
-
-    // Lógica dos Modais e Autenticação
-    document.addEventListener('DOMContentLoaded', () => {
-      const modalAuth = document.getElementById('modal-auth');
-      const btnAbrirLogin = document.getElementById('btn-abrir-login');
-      const fecharAuth = document.getElementById('fechar-auth');
-      const abaLogin = document.getElementById('aba-login');
-      const abaCadastro = document.getElementById('aba-cadastro');
-      const formLogin = document.getElementById('form-login');
-      const formCadastro = document.getElementById('form-cadastro');
-      const btnLogout = document.getElementById('btn-logout');
-
-      // Abrir e Fechar Modal de Autenticação
-      if (btnAbrirLogin) {
-        btnAbrirLogin.addEventListener('click', () => {
-          modalAuth.classList.add('aberto');
-        });
-      }
-
-      if (fecharAuth) {
-        fecharAuth.addEventListener('click', () => {
-          modalAuth.classList.remove('aberto');
-        });
-      }
-
-      // Alternar entre abas de Login e Cadastro no Modal
-      if (abaLogin && abaCadastro) {
-        abaLogin.addEventListener('click', () => {
-          abaLogin.classList.add('ativa');
-          abaCadastro.classList.remove('ativa');
-          formLogin.style.display = 'flex';
-          formCadastro.style.display = 'none';
-        });
-
-        abaCadastro.addEventListener('click', () => {
-          abaCadastro.classList.add('ativa');
-          abaLogin.classList.remove('ativa');
-          formCadastro.style.display = 'flex';
-          formLogin.style.display = 'none';
-        });
-      }
-
-      // Login
-      if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const email = document.getElementById('login-email').value;
-          const usuario = { nome: email.split('@')[0] };
-          
-          localStorage.setItem('gc_usuario', JSON.stringify(usuario));
-          atualizarUsuario();
-          modalAuth.classList.remove('aberto');
-          mostrarAviso('Login efetuado com sucesso!');
-        });
-      }
-
-      // Cadastro
-      if (formCadastro) {
-        formCadastro.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const nome = document.getElementById('cad-nome').value;
-          const usuario = { nome };
-          
-          localStorage.setItem('gc_usuario', JSON.stringify(usuario));
-          atualizarUsuario();
-          modalAuth.classList.remove('aberto');
-          mostrarAviso('Conta criada com sucesso!');
-        });
-      }
-
-      // Logout
-      if (btnLogout) {
-        btnLogout.addEventListener('click', () => {
-          localStorage.removeItem('gc_usuario');
-          atualizarUsuario();
-          mostrarAviso('Saindo da conta...');
-        });
-      }
-
-      // Modal de Pedido
-      const modalPedido = document.getElementById('modal-pedido');
-      const btnCancelarPedido = document.getElementById('modal-cancelar');
-      const btnConfirmarPedido = document.getElementById('modal-confirmar');
-
-      document.querySelectorAll('.btn-pedir').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const itemNome = e.target.getAttribute('data-id');
-          document.getElementById('modal-item-nome').textContent = itemNome;
-          modalPedido.classList.add('aberto');
-        });
-      });
-
-      if (btnCancelarPedido) {
-        btnCancelarPedido.addEventListener('click', () => {
-          modalPedido.classList.remove('aberto');
-        });
-      }
-
-      if (btnConfirmarPedido) {
-        btnConfirmarPedido.addEventListener('click', () => {
-          const nomeInput = document.getElementById('modal-nome').value.trim();
-          if (!nomeInput) {
-            alert('Por favor, informe seu nome para confirmar o pedido.');
-            return;
-          }
-          modalPedido.classList.remove('aberto');
-          mostrarAviso('Pedido realizado com sucesso!');
-        });
-      }
-
-      // Atualiza o estado da interface com base no utilizador guardado
-      function atualizarUsuario() {
-        const usuarioGuardado = JSON.parse(localStorage.getItem('gc_usuario'));
-        const userBox = document.getElementById('usuario-logado-box');
-        const nomeHeader = document.getElementById('nome-usuario-header');
-        const inputNomeModal = document.getElementById('modal-nome');
-
-        if (usuarioGuardado) {
-          btnAbrirLogin.style.display = 'none';
-          userBox.style.display = 'flex';
-          nomeHeader.textContent = usuarioGuardado.nome;
-          if (inputNomeModal) inputNomeModal.value = usuarioGuardado.nome;
-        } else {
-          btnAbrirLogin.style.display = 'inline-block';
-          userBox.style.display = 'none';
-          if (inputNomeModal) inputNomeModal.value = '';
+            document.getElementById(idAba).classList.add('ativa');
+            evt.currentTarget.classList.add('ativa');
         }
-      }
 
-      function mostrarAviso(msg) {
-        const aviso = document.getElementById('aviso-sucesso');
-        if (aviso) {
-          aviso.textContent = msg;
-          aviso.classList.add('visivel');
-          setTimeout(() => aviso.classList.remove('visivel'), 3000);
-        }
-      }
+        // Lógica dos Modais e Autenticação
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalAuth = document.getElementById('modal-auth');
+            const btnAbrirLogin = document.getElementById('btn-abrir-login');
+            const fecharAuth = document.getElementById('fechar-auth');
+            const abaLogin = document.getElementById('aba-login');
+            const abaCadastro = document.getElementById('aba-cadastro');
+            const formLogin = document.getElementById('form-login');
+            const formCadastro = document.getElementById('form-cadastro');
+            const btnLogout = document.getElementById('btn-logout');
 
-      // Verifica ao carregar
-      atualizarUsuario();
-    });
-  </script>
+            // Abrir e Fechar Modal de Autenticação
+            if (btnAbrirLogin) {
+                btnAbrirLogin.addEventListener('click', () => {
+                    modalAuth.classList.add('aberto');
+                });
+            }
+
+            if (fecharAuth) {
+                fecharAuth.addEventListener('click', () => {
+                    modalAuth.classList.remove('aberto');
+                });
+            }
+
+            // Alternar entre abas de Login e Cadastro no Modal
+            if (abaLogin && abaCadastro) {
+                abaLogin.addEventListener('click', () => {
+                    abaLogin.classList.add('ativa');
+                    abaCadastro.classList.remove('ativa');
+                    formLogin.style.display = 'flex';
+                    formCadastro.style.display = 'none';
+                });
+
+                abaCadastro.addEventListener('click', () => {
+                    abaCadastro.classList.add('ativa');
+                    abaLogin.classList.remove('ativa');
+                    formCadastro.style.display = 'flex';
+                    formLogin.style.display = 'none';
+                });
+            }
+
+            // Login
+            if (formLogin) {
+                formLogin.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value;
+                    const usuario = { nome: email.split('@')[0] };
+
+                    localStorage.setItem('gc_usuario', JSON.stringify(usuario));
+                    atualizarUsuario();
+                    modalAuth.classList.remove('aberto');
+                    mostrarAviso('Login efetuado com sucesso!');
+                });
+            }
+
+            // Cadastro
+            if (formCadastro) {
+                formCadastro.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nome = document.getElementById('cad-nome').value;
+                    const usuario = { nome };
+
+                    localStorage.setItem('gc_usuario', JSON.stringify(usuario));
+                    atualizarUsuario();
+                    modalAuth.classList.remove('aberto');
+                    mostrarAviso('Conta criada com sucesso!');
+                });
+            }
+
+            // Logout
+            if (btnLogout) {
+                btnLogout.addEventListener('click', () => {
+                    localStorage.removeItem('gc_usuario');
+                    atualizarUsuario();
+                    mostrarAviso('Saindo da conta...');
+                });
+            }
+
+            // Modal de Pedido
+            const modalPedido = document.getElementById('modal-pedido');
+            const btnCancelarPedido = document.getElementById('modal-cancelar');
+            const btnConfirmarPedido = document.getElementById('modal-confirmar');
+
+            document.querySelectorAll('.btn-pedir').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const itemNome = e.target.getAttribute('data-id');
+                    document.getElementById('modal-item-nome').textContent = itemNome;
+                    modalPedido.classList.add('aberto');
+                });
+            });
+
+            if (btnCancelarPedido) {
+                btnCancelarPedido.addEventListener('click', () => {
+                    modalPedido.classList.remove('aberto');
+                });
+            }
+
+            if (btnConfirmarPedido) {
+                btnConfirmarPedido.addEventListener('click', () => {
+                    const nomeInput = document.getElementById('modal-nome').value.trim();
+                    if (!nomeInput) {
+                        alert('Por favor, informe seu nome para confirmar o pedido.');
+                        return;
+                    }
+                    modalPedido.classList.remove('aberto');
+                    mostrarAviso('Pedido realizado com sucesso!');
+                });
+            }
+
+            // Atualiza o estado da interface com base no utilizador guardado
+            function atualizarUsuario() {
+                const usuarioGuardado = JSON.parse(localStorage.getItem('gc_usuario'));
+                const userBox = document.getElementById('usuario-logado-box');
+                const nomeHeader = document.getElementById('nome-usuario-header');
+                const inputNomeModal = document.getElementById('modal-nome');
+
+                if (usuarioGuardado) {
+                    btnAbrirLogin.style.display = 'none';
+                    userBox.style.display = 'flex';
+                    nomeHeader.textContent = usuarioGuardado.nome;
+                    if (inputNomeModal) inputNomeModal.value = usuarioGuardado.nome;
+                } else {
+                    btnAbrirLogin.style.display = 'inline-block';
+                    userBox.style.display = 'none';
+                    if (inputNomeModal) inputNomeModal.value = '';
+                }
+            }
+
+            function mostrarAviso(msg) {
+                const aviso = document.getElementById('aviso-sucesso');
+                if (aviso) {
+                    aviso.textContent = msg;
+                    aviso.classList.add('visivel');
+                    setTimeout(() => aviso.classList.remove('visivel'), 3000);
+                }
+            }
+
+            // Verifica ao carregar
+            atualizarUsuario();
+        });
+    </script>
 </body>
+
 </html>
