@@ -10,12 +10,19 @@
 
 body {
   background-color: #f9f6f0;
-  color: #333;
+  color: #333333;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 /* ==========================================================================
-   2. CABEÇALHO (TOPO)
+   2. CABEÇALHO (TOPO & NAVEGAÇÃO)
    ========================================================================== */
 .topo {
   background-color: #ffffff;
@@ -40,15 +47,17 @@ body {
 }
 
 .nav-links a {
-  margin: 0 1rem;
+  margin: 0 0.8rem;
   text-decoration: none;
-  color: #555;
+  color: #555555;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.ativo {
   color: #c86d3b;
+  font-weight: 700;
 }
 
 /* Área do Utilizador */
@@ -78,28 +87,28 @@ body {
    3. SEÇÃO HERO
    ========================================================================== */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
               url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200') center/cover no-repeat;
   color: #ffffff;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   text-align: center;
 }
 
 .hero-texto h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 
 .hero-texto p {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  font-size: 1.1rem;
-  opacity: 0.9;
+  font-size: 1.15rem;
+  opacity: 0.95;
 }
 
 /* ==========================================================================
-   4. CARDÁPIO & ABAS DA CATEGORIA
+   4. CARDÁPIO & ABAS DAS CATEGORIAS
    ========================================================================== */
 .cardapio {
   max-width: 1100px;
@@ -114,11 +123,11 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Estilo dos Botões das Abas */
+/* Botões das Abas */
 .abas-container {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
@@ -130,9 +139,9 @@ body {
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
-  color: #666;
+  color: #666666;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
 .aba-item:hover {
@@ -147,7 +156,7 @@ body {
   box-shadow: 0 4px 10px rgba(74, 53, 37, 0.2);
 }
 
-/* Alternância do Conteúdo das Abas */
+/* Conteúdo das Abas */
 .aba-conteudo {
   display: none;
 }
@@ -196,13 +205,13 @@ body {
 
 .item h3 {
   font-size: 1.2rem;
-  color: #222;
+  color: #222222;
   margin-bottom: 0.4rem;
 }
 
 .item p {
   font-size: 0.9rem;
-  color: #666;
+  color: #666666;
   margin-bottom: 1rem;
   flex-grow: 1;
 }
@@ -221,7 +230,7 @@ body {
 }
 
 /* ==========================================================================
-   5. BOTÕES
+   5. BOTÕES GERAIS
    ========================================================================== */
 .botao {
   background-color: #c86d3b;
@@ -233,6 +242,8 @@ body {
   font-weight: 600;
   transition: background-color 0.2s;
   text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .botao:hover {
@@ -256,11 +267,11 @@ body {
 }
 
 .botao-secundario {
-  background-color: #888;
+  background-color: #888888;
 }
 
 .botao-secundario:hover {
-  background-color: #666;
+  background-color: #666666;
 }
 
 .largura-total {
@@ -269,7 +280,273 @@ body {
 }
 
 /* ==========================================================================
-   6. MODAIS
+   6. PÁGINA SOBRE A EMPRESA
+   ========================================================================== */
+.sobre-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.sobre-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sobre-hero h1 {
+  font-size: 2.2rem;
+  color: #4a3525;
+  margin-bottom: 0.8rem;
+}
+
+.sobre-hero p {
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.grid-sobre {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.card-historia {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-historia h2 {
+  color: #c86d3b;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.valor-item {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #4a3525;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.valor-item h3 {
+  color: #4a3525;
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   7. PÁGINA CONSULTAR PEDIDO
+   ========================================================================== */
+.pedido {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.pedido h2 {
+  font-size: 2rem;
+  color: #4a3525;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.pedido .subtexto {
+  text-align: center;
+  color: #666666;
+  margin-bottom: 2rem;
+}
+
+.busca-pedido {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.busca-pedido input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.card-pedido {
+  background: #ffffff;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+.card-pedido-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pendente { background: #ffeeba; color: #856404; }
+.status-preparo { background: #b8daff; color: #004085; }
+.status-pronto { background: #c3e6cb; color: #155724; }
+.status-entregue { background: #e2e3e5; color: #383d41; }
+
+.vazio {
+  text-align: center;
+  color: #888888;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   8. PÁGINA ADMINISTRATIVA (GERÊNCIA)
+   ========================================================================== */
+.admin-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.card-dash {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #c86d3b;
+}
+
+.card-dash h3 {
+  font-size: 0.85rem;
+  color: #666666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.card-dash .valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4a3525;
+}
+
+.admin-secao {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.admin-secao h2 {
+  font-size: 1.4rem;
+  color: #4a3525;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+/* Tabela de Pedidos */
+.tabela-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #f9f6f0;
+  color: #4a3525;
+}
+
+select.select-status {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-excluir {
+  background-color: #d9534f;
+  color: #ffffff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-excluir:hover {
+  background-color: #c9302c;
+}
+
+/* Formulário do Admin */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grupo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: 0.3rem;
+}
+
+.form-grupo input, .form-grupo select, .form-grupo textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.form-grupo textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ==========================================================================
+   9. MODAIS & NOTIFICAÇÕES
    ========================================================================== */
 .modal {
   display: none;
@@ -306,7 +583,7 @@ body {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #888;
+  color: #888888;
 }
 
 .auth-abas {
@@ -322,7 +599,7 @@ body {
   border: none;
   font-size: 1rem;
   font-weight: 600;
-  color: #888;
+  color: #888888;
   cursor: pointer;
 }
 
@@ -341,7 +618,7 @@ body {
 .form-auth label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #444;
+  color: #444444;
   margin-top: 0.8rem;
   margin-bottom: 0.2rem;
 }
@@ -361,9 +638,7 @@ body {
   margin-top: 1.5rem;
 }
 
-/* ==========================================================================
-   7. NOTIFICAÇÃO & RODAPÉ
-   ========================================================================== */
+/* Notificações */
 .aviso {
   position: fixed;
   bottom: 20px;
@@ -381,11 +656,14 @@ body {
   display: block;
 }
 
+/* ==========================================================================
+   10. RODAPÉ
+   ========================================================================== */
 .rodape {
   background-color: #4a3525;
   color: #e0d5c1;
   text-align: center;
   padding: 2rem 1rem;
-  margin-top: 4rem;
+  margin-top: auto;
   font-size: 0.9rem;
 }
